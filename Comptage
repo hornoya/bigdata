@@ -1,0 +1,30 @@
+#On ouvre le fichier Sample.txt
+
+f = open("C:/Users/antoine/Documents/Documents/M2_SEP/Big_data/labs&data/spark-labs/spark-labs/data/twinkle/sample.txt", "r")
+
+#On créer une fonction word_count(), elle prend pour paramètre une chaine de charactère
+# et elle prend chaque mot de la chaine puis vérifie le nombre de fois que le mot apparait 
+# dans toute la chaine. Si elle trouve une correspondance elle ajoute un chiffre au compteur 
+# si ce n'est pas le cas elle renvoie 1
+# la fonction return renvoie le comptage
+def word_count(str):
+    counts = dict()
+    words = str.split()
+
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+
+    return counts
+#on affiche dans la console le comptage pour chaque mot
+print(word_count(f.read()))
+
+Affichage = str(word_count(f.read()))
+Affichage
+
+#Permet de créer un fichier texte puis d'enregistrer dedans l'argument enregistré 
+# en tant que string 
+with open("Output.txt", "w") as text_file:
+    text_file.writelines("{'twinkle': 4, 'little': 2, 'star': 2, 'how': 1, 'I': 1, 'wonder': 1, 'what': 1, 'you': 1, 'are': 1, 'up': 1, 'above': 1, 'the': 2, 'world': 1, 'so': 1, 'high': 1, 'like': 1, 'a': 1, 'diamond': 1, 'in': 1, 'sky': 1}")
